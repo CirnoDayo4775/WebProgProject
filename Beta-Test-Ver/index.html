@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: auto;
+            padding: auto;
+            background-color: #412525;
+        }
+
+        .login-box {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 60px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(13, 13, 13, 0.1);
+        }
+
+        .login-box img {
+            display: block;
+            margin: 0 auto 20px;
+            width: 400px; 
+            height: auto; 
+        }
+
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-box p {
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        .error {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <img src="../Rum/image.png" alt="center">
+    <h2>Login Form</h2>
+    <form action="login.php" method="POST">
+        <p>Username :</p>
+        <input type="text" id="username" name="username">
+        <p id="errorUsername" class="error"></p>
+        <p>Password :</p>
+        <input type="password" id="password" name="password">
+        <p id="errorPassword" class="error"></p>
+        <button type="submit" class="btn btn-dark">Login</button>
+        <button type="button" id="clickme" class="btn btn-dark">Cancel</button>
+    </form>
+</div>
+
+</body>
+</html>
