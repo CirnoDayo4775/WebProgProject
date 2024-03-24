@@ -108,7 +108,11 @@ CREATE TABLE `userdata` (
 --
 
 INSERT INTO `userdata` (`idNo`, `username`, `password`, `userFirstName`, `UserLastName`, `imgName`, `isAdmin`) VALUES
-(1, 'Tester01', '1234', 'Tester', 'V01', '', 0);
+(1, 'addmin', '1234', 'Tester', 'V01', 'addmin.png', 1),
+(2, 'lisa', '5678', 'Lalisa ', 'Manoban', 'lisa.jpg', 0),
+(3, 'Rose', '0910', 'Chae Young', 'Park', 'rose.jpg', 0),
+(4, 'Jennie ', '1112', 'Jennie ', 'Kim', 'jennie.jpg', 0),
+(5, 'Jisoo', '1314', 'Ji Soo', 'Kim ', 'jisoo.jpg', 0);
 
 --
 -- Indexes for dumped tables

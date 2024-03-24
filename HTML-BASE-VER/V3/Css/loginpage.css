@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #b5b5b5;
+}
+.profile {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+}
+.profile img {
+    
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.login-heading {
+    
+    text-align: center;
+    color: #000000;
+}
+.form-heading {
+    
+    color: #000000;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.form-control {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.btn {
+    border-radius: 10px;
+    font-weight: bold;
+}

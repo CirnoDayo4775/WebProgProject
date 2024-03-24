@@ -36,14 +36,14 @@
             //header("location:../profile.php?username=".$username);
             $_SESSION['username'] = $username;
             
-                header("location:../home.php");
+                header("location:../HTML-BASE-VER/V3/HomeV2.php");
             
             
         }
 
     }else{
         //echo "Please check username and password";
-        header("location:../Login Form.html?error=1");
+        header("location:../HTML-BASE-VER/V3/loginpage.html?$username$password");
     }
 
     $con->close();

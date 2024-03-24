@@ -2,7 +2,7 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$db = "../../Database/MarshallDBV1.sql";
+$db = "marshalldb";
 
 $con = new mysqli($host, $username, $password, $db);
 if ($con->connect_error) {
