@@ -1,82 +1,112 @@
 <?php
-// 1. Connect DB (MySQL)
-include 'connectDB.php';
-
-// 2. Create SQL Statement
-$sql = "SELECT * FROM products";
-
-$result = $con->query($sql);
-$count_row = mysqli_num_rows($result);
-
-$con->close();
+session_start();
+require_once("config.php");#เรียกไฟล์เชื่อมต่อกับฐานข้อมูล
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Slider</title>
-    <!-- bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- fontawesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- owl carousel -->
-    <link rel = "stylesheet" href = "owl_carousel/owl.carousel.css">
-    <link rel = "stylesheet" href = "owl_carousel/owl.theme.default.css">
-    <!-- custom css -->
-    <link rel = "stylesheet" href = "style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-874" />
+<link rel="stylesheet" type="text/css" href="design.css">
+<title>Crochet ตุ๊กตาถักไหมพรม</title>
 </head>
-
 <body>
-    <div class="row g-4 my-5 mx-auto owl-carousel owl-themed flex flex-row">
-        <?php if ($count_row >= 1) : ?>
-            <div class="container">
-                <div class="row my-5">
-                    <h1 class="text-center">Products</h1>
-                    <p class="fw-light w-75 mx-auto text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque est neque facilis debitis, repellat dolorem.</p>
-                </div>
-
-                <div class="d-flex justify-content-between">
-                    <?php while ($rs = $result->fetch_assoc()) : ?>
-                        <div class="col product-item mx-auto">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="images/products/<?php echo $rs['picProduct']; ?>" alt="" class="img-fluid d-block mx-auto">
-                            </div>
-
-                        <div class = "row btns w-50 mx-auto text-center">
-                        <button type = "button" class = "col-6 py-2">
-                            <i class = "fa fa-cart-plus"></i> Add to Cart
-                        </button>
-                        <button type = "button" class = "col-6 py-2">
-                            <i class = "fa fa-binoculars"></i> View
-                        </button>
-                    </div>
-
-                        <div class="product-info p-3 text-center">
-                            <!-- Add your other product details here -->
-                            <a href="#" class="d-block text-dark text-decoration-none py-2 product-name"><?php echo $rs['ProductName']; ?></a>
-                            <span class="product-price">$ <?php echo $rs['ProductPrice']; ?></span>
-                            <!-- Add your other product details here -->
-                        </div>
-                    </div>
-                    
-                    
-                       
-                    </div>
-                
-
-                <?php endwhile; ?>
-            </div>
+<div id="container">
+  <div id="header">
+    <div id="headtext"> </div>
+    <div id="logo"></div>
+    <div id="bgright"></div>
+  </div>
+  <div id="menuarea">
+    <div id="menu">
+      <p id="text" align="center"><a href="fp_index.php">หน้าแีรก</a></p>
+    </div>
+    <div id="menu">
+      <p id="text" align="center"><a href="fp_showpd.php?all=showall">สินค้า</a></p>
+    </div>
+    <div id="menu">
+      <p id="text" align="center"><a href="#">วิธีสั่งซื้อ-ชำระเงิน</a></p>
+    </div>
+    <div id="menu">
+      <p id="text" align="center"><a href="#">ติดต่อเรา</a></p>
+    </div>
+  </div>
+  <div id="leftmenuarea">
+    <div id="content-left">
+      <div id="bg-loginbar">
+        <div id="loginbar" >สำหรับสมาชิก</div>
+      </div>
+      <? 
+	  include_once('flogin.php');
+	   ?>
+      <div id="bg-loginbar">
+        <div id="loginbar" >ค้นหาสินค้า</div>
+      </div>
+      <? include_once('searchpd.php'); ?>
+      <br />
+    </div>
+    <div id="contentX">
+      <div id="content1">
+        <div id="bg-pdbar">
+          <div id="pdbar"> <img src="images/icon/addtocart.png" width="24" height="24" /> My Cart<br />
+            <br />
+          </div>
         </div>
-    <?php else : ?>
-        <p>No products found.</p>
-    <?php endif; ?>
+        <table width="100%" border="0" cellpadding="3" cellspacing="0" style="border:#fff solid 2px;">
+          <tr bgcolor="#0099FF">
+            <td width="69%"><strong>ชื่อสินค้า</strong></td>
+            <td width="13%" align="center"><strong>จำนวน</strong></td>
+            <td width="9%" align="center"><strong>ราคา</strong></td>
+            <td width="9%" align="center"><strong>ลบรายการ</strong></td>
+          </tr>
+          <? 
+	if(count($_SESSION["cartNumber"])>0){#จำนวนข้อมูลที่มีอยู่หากมากกว่า0
+	foreach($_SESSION["cartNumber"] as $RowCount){#วนลูปดึงข้อมูลสินค้าออกมาให้ครบตามจำนวนข้อมูลที่มีอยู่
+		$rs_showpd=$conn->Execute("SELECT* FROM tb_product WHERE pd_id=".$_SESSION[$RowCount][0]."");
+	if($rs_showpd->fields["pd_amount"]<1){#ตรวจสอบจำนวนสินค้า หากจำนวนสินค้าเท่ากับ0
+		echo "<script>";
+		echo "alert('ขออภัย".$rs_showpd->fields["pdname"]."สินค้าหมดแล้ว');window.location='chkcart.php?del=".$RowCount."';";
+        echo "</script>";
+		exit();
+	}
+	?>
+          <tr>
+            <td height="23"><?=$rs_showpd->fields["pd_name"]#ชื่อสินค้า?>
+              <input type="hidden" name="cartRows[]" id="cartRows[]" value="<?=$RowCount?>" />
+              <input type="hidden" name="pd_id[]" id="pd_id[]" value="<?=$rs_showpd->fields["pd_id"]#รหัสสินค้า?>" /></td>
+            <td align="center"><input name="pd_amount[]" type="text" id="pd_amount[]" size="5"  value="<?=$_SESSION[$RowCount][1]#จำนวนสินค้า?>"/></td>
+            <td align="center"><?=$_SESSION[$RowCount][2]#ราคาสินค้า?></td>
+            <td align="center"><a href="chkcart.php?del=<?=$RowCount?>"><img src="images/icon/del.gif" width="16" height="16"  border="0"/></a></td>
+          </tr>
+          <?
+		$TotalAmount+=$_SESSION[$RowCount][1];#คำนวณหาจำนวนสินค้าทั้งหมด
+		$TotalPrice+=$_SESSION[$RowCount][2];#คำนวณหาราคาสินค้าทั้งหมด
+		} 
+		
+		?>
+          <tr>
+            <td height="23" align="right"><strong> รวม</strong></td>
+            <td align="center"><strong>
+              <?= $TotalAmount?>
+              </strong></td>
+            <td align="center"><strong>
+              <?= number_format($TotalPrice,2,".",",")?>
+              </strong></td>
+            <td align="center">&nbsp;</td>
+          </tr>
+          <? } else { ?>
+          <tr>
+            <td height="23" colspan="4" align="center"><strong>ไม่พบสินค้าในตระกร้า</strong></td>
+          </tr>
+          <? }  ?>
+        </table>
+      </div>
+      <div id="content2"></div>
+    </div>
+  </div>
+  <div class="clear"> </div>
+  <div id="footer">
+    <h1>copyright&copy;2010 http://pnwtt1987.blogspot.com</h1>
+  </div>
 </div>
-
-    <!-- Add your script tags and other scripts here -->
 </body>
-
 </html>

@@ -1,5 +1,5 @@
 body {
-    background: #bd6643;
+    background: #ffffff;
     font-family: "Open Sans", sans-serif;
   }
   h2 {
@@ -167,4 +167,6 @@ body {
 
 .carousel-item img{
     max-height: 150px;
+}.navbar{
+  background-color: #37383a;
 }
