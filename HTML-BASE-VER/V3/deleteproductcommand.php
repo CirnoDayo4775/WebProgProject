@@ -11,7 +11,7 @@
 
 
 
-    $sql = "delete products where ProductID = {$pid}";
+    $sql = "delete productlist where prodid = {$pid}";
 
     print $sql;
 
