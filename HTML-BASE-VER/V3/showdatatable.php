@@ -66,21 +66,22 @@ while($rs=$result->fetch_assoc()){
 ?>
             <div class="col-4 p-2 mb-2">
             <div class="p-2" style="border:2px solid black;">
-                <img src="/img/<?php echo $rs["picProduct"]; ?>" width="100%" alt="" /><br><br>
+                <img src="../../product/<?php echo $rs["prodShowImg"]; ?>" width="100%" alt="" /><br><br>
                 <div class="d-flex justify-content-between">
 
-                    <p><?php echo $rs["ProductName"] ?></p>
+                    <p><?php echo $rs["prodName"] ?></p>
 
 
-                    <p><?php echo $rs["ProductPrice"] ?></p>
+                    <p><?php echo $rs["prodDPrice"] ?></p>
+                    <p><?php echo $rs["prodPrice"] ?></p>
 
                 </div>
                 <label for="">
                     <div class="d-flex justify-content-between">
-                        <button class="btn btn-primary" onclick="window.location.href='updateproduct.php?pid=<?php echo $rs["ProductID"] ?>'">
+                        <button class="btn btn-primary" onclick="window.location.href='updateproduct.php?pid=<?php echo $rs["prodid"] ?>'">
                             Update!
                         </button>
-                        <button class="btn btn-primary" id="buttonof<?php echo $rs["ProductID"]?>" onclick="confirm('<?php echo $rs["ProductID"]?>')">
+                        <button class="btn btn-primary" id="buttonof<?php echo $rs["prodid"]?>" onclick="confirm('<?php echo $rs["prodid"] ?>')">
                             Delete!
                         </button>
                     </div>

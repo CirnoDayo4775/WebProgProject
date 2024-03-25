@@ -1,9 +1,5 @@
 <?php 
 session_start();
-if(empty($_SESSION['username'])) {
-  header("Location: loginpage.php");
-  exit;
-}
 
 
 include dirname(__DIR__)."/../mainSystem/connectDB.php";
@@ -102,10 +98,51 @@ $DataUser = $con->query($sql)->fetch_assoc(); ?>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+                <a class="nav-link" href="#">
+                  หน้าแรก
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  สินค้าผู้ชาย
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  สินค้าผู้หญิง
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  สินค้าเด็ก
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
          <?php if(empty($_SESSION['username'])) {
 
 
 ?> 
+
+
+
         
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="loginpage.html"><svg xmlns="http://www.w3.org/2000/svg" width="16"
@@ -115,7 +152,7 @@ $DataUser = $con->query($sql)->fetch_assoc(); ?>
               </svg>เข้าสู่ระบบ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="loginpage.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            <a class="nav-link" href="sign_up.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                 fill="currentColor" class="bi bi-person-fill-add me-1" viewBox="0 0 16 16">
                 <path
                   d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
@@ -159,107 +196,8 @@ $DataUser = $con->query($sql)->fetch_assoc(); ?>
     </div>
   </nav>
   <!-- nav -->
-
-  <div class="d-flex justify-content-end">
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-<div class="container-fluid">
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#">
-              หน้าแรก
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              สินค้าผู้ชาย
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              สินค้าผู้หญิง
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              สินค้าเด็ก
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-        </ul>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <div class="container-fluid">
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#">
-              หน้าแรก
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              สินค้าผู้ชาย
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              สินค้าผู้หญิง
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              สินค้าเด็ก
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-        </ul>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        </div>
-
-        </div>
-    </nav>
-  </div>
-
   <div class="d-flex justify-content-center mt-3">
-    <img src="./Rum/1.png" class="img-fluid" width="1200w" style="border-radius: 30px; box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);">
+    <img src="./Rum/0.png" class="img-fluid" width="1200w" style="border-radius: 30px; box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);">
   </div>
 
   <div style="text-align: center; margin-top: 10px;" data-mce-style="text-align: center;"><img
@@ -273,19 +211,72 @@ $DataUser = $con->query($sql)->fetch_assoc(); ?>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-            <h2>All  <b>Products</b></h2>
+            <h2>Lastest  <b>Products</b></h2>
             <div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
             <!-- Carousel indicators -->
             <ol class="carousel-indicators">
               <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
-              <li data-target="#myCarousel1" data-slide-to="1"></li>
-              <li data-target="#myCarousel1" data-slide-to="2"></li>
             </ol>
             
             <div class="row justify-content-center">
-                  <?php $i = 1; while($rs=$result->fetch_assoc()){ ?>
+            <?php 
+$i = 1; 
+$counter = 1; 
+while (($rs = $result->fetch_assoc()) && $counter <= 4) { ?>
+    <div class="col-sm-3 thumb-wrapper" style="box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);">
+        <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+        <div class="img-box">
+            <img src="../../product/<?php echo $rs["prodShowImg"]; ?>" class="img-fluid" alt="">									
+        </div>
+        <div class="thumb-content">
+            <h4><?php echo $rs["prodName"]; ?></h4>									
+            <p class="item-price">
+                <?php if ($rs["prodPrice"] != 0) { ?>
+                    <strike><?php echo $rs["prodDPrice"]; ?> THB</strike> <b><?php echo $rs["prodPrice"]; ?> THB</b>
+                <?php } else { ?>
+                    <b><?php echo $rs["prodDPrice"]; ?> THB</b>
+                <?php }?>
+            </p>
+            <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>						
+    </div>
+<?php 
+$counter++;
+} ?>
+                </div>
 
-                        <div class="col-sm-3 m-1 thumb-wrapper">
+
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./Rum/1.png" class="d-block" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./Rum/2.png" class="d-block" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./Rum/3.png" class="d-block" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./Rum/4.png" class="d-block" alt="...">
+        </div>
+      </div>
+    </div>
+
+
+
+
+                <h2>All  <b>Products</b></h2>
+                <div class="row justify-content-center">
+                  <?php $i = 0; while($rs=$result->fetch_assoc()){ ?>
+
+                        <div class="col-sm-3 thumb-wrapper" style="box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);">
                     
                       <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
                       <div class="img-box">
@@ -304,6 +295,16 @@ $DataUser = $con->query($sql)->fetch_assoc(); ?>
                           </div>
                           <?php } ?>
                 </div>
+
+
+
+
+
+
+
+
+
+
             <!-- Wrapper for carousel items >
             <div class="carousel-inner">
               <div class="item carousel-item active">

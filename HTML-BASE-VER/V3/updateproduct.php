@@ -1,23 +1,36 @@
 <?php 
-session_start();
-if(empty($_SESSION['username'])) {
-  header("Location: loginpage.php");
-  exit;
-}
+include dirname(__DIR__)."/../mainSystem/connectDB.php";
 
+  $prodid = $_GET["pid"];
 
-include 'mainSystem/connectDB.php';
-$username = $_SESSION['username'];
+  $sqler = "select * from productlist where prodid = '".$prodid."'";
 
-$sql = "select * from userdata where username = '".$username . "'"; 
-$DataUser = $con->query($sql)->fetch_assoc(); ?>
+$result = $con->query($sqler)->fetch_assoc();;
+ ?>
+<?php
+  $error_message="";
+  $UserFirstName="";
+    if(isset($_GET['error'])){
+      $error = $_GET['error'];
+      
+      if ($error == 1 ){
+        $error_message = "Please check UserFirstName";
+      }
+    }else{
+      if (isset($_COOKIE['UserFirstName'])){
+          $UserFirstName = $_COOKIE['UserFirstName'];
+      }
+      
+    }
+    
+?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Your Profile</title>
+    <title>Test?</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -34,7 +47,7 @@ $DataUser = $con->query($sql)->fetch_assoc(); ?>
       /* Tuangwit template */
       body {
         position: fixed;
-        background-color: #ffffff;
+
         justify-content: center;
         align-items: center;
         padding-left: 0px;
@@ -43,7 +56,7 @@ $DataUser = $con->query($sql)->fetch_assoc(); ?>
         width: 100vw;
 
         overflow-x: hidden;
-        font-family: Arial, sans-serif;
+        font-family: "printable4uregular";
         background-color: rgb(187, 187, 187);
       }
       /* Custom CSS */
@@ -55,28 +68,33 @@ $DataUser = $con->query($sql)->fetch_assoc(); ?>
       <br /><br /><br /><br />
 
       <div class="container-fluid p-3" style="border: 2px black solid">
+
+<h1>Product ID : <?php echo $result["prodid"]; ?> | <?php echo $result["prodName"]; ?></h1>
         <div class="row">
           <div class="col-3">
-            <img src="/img/<?php echo $DataUser["imgName"]; ?>" width="100%"
-            alt="" />
+            <img
+              src="../../product/<?php echo $DataUser["prodShowImg"]; ?>"
+              width="100%"
+              alt=""
+            />
           </div>
           <div class="col">
-            <h1>
-              Welcome!
-              <?php echo $DataUser["userFirstName"].' '.$DataUser["UserLastName"] ?>
-            </h1>
-            <p>
-              <?php echo $DataUser["userFirstName"].' '.$DataUser["UserLastName"] ?>
-            </p>
-            <p><?php echo $DataUser["UserAddress"] ?></p>
-            <button
-              class="btn btn-primary"
-              onclick="window.location.href='edituser.php'"
-            >
-              Edit Info
-            </button>
+          <form method="post" action="updateproductcommand.php">
+        <div class="mb-3">
+          <label for="ProductName">Product Name</label>
+          <input type="text" class="form-control" id="ProductName" name="ProductName" aria-describedby="userHelp" value="<?php echo $result["prodName"]; ?>">
 
-            <button class="btn btn-danger" onclick="window.location.href='logout.php'">Log out</button>
+          <label for="ProductPrice">Product Price</label>
+          <input type="text" class="form-control" id="ProductPrice" name="ProductPrice" aria-describedby="userHelp" value="<?php echo $result["prodDPrice"]; ?>">
+          <input type="hidden" id="pid" name="pid" value="<?php echo $prodid ?>">
+        </div>
+
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-danger">Cancel</button>
+      </form>
+      <br>
+      <button class="btn btn-info" onclick="window.location.href='showdatatable.php'">Back</button>
           </div>
         </div>
       </div>

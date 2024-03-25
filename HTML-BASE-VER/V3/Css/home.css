@@ -1,5 +1,5 @@
 body {
-    background-color: #b5b5b5;
+    background-color: #ffffff;
     font-family: "Open Sans", sans-serif;
   }
   h2 {
@@ -164,9 +164,11 @@ body {
 }.WC{
   text-align:  center;
 }
-
-.carousel-item img{
-    max-height: 150px;
-}.navbar{
+.navbar{
   background-color: #37383a;
+}
+
+.d-block{
+  width: 100%;
+  height: auto;
 }

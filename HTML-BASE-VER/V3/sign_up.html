@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif;
             margin: auto;
             padding: auto;
-            background-color: #412525;
+            background-color: #b5b5b5;
         }
 
         .login-box {
@@ -59,27 +59,45 @@
 <div class="login-box ">
     <img src="./Rum/image.png" alt="center">
     <h2>สมัครสมาชิก</h2>
-    <form action="login.php" method="POST">
+    <form action="../../mainSystem/regis.php" method="POST">
         <p>Username :</p>
         <input type="text" id="username" name="username">
         <p id="errorUsername" class="error"></p>
+        <div class="row">
+        <div class="col-6">
         <p>Password :</p>
         <input type="password" id="password" name="password">
         <p id="errorPassword" class="error"></p>
+        </div>
+        <div class="col-6">
         <p>Password 2 :</p>
-        <input type="password" id="password" name="password">
+        <input type="password" id="Conpassword" name="Conpassword">
         <p id="errorPassword" class="error"></p>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-6">
+        <p>First Name :</p>
+        <input type="text" id="FirstName" name="FirstName">
+        </div>
+        <div class="col-6">
+        <p>Last Name :</p>
+        <input type="text" id="LastName" name="LastName">
+        </div>
+        </div>
+        
+        
+
         <div class="center">
             <button type="submit" class="btn btn-dark btn-style btn-lg " id="btnRegister">
                 สมัครสมาชิก                                    
             </button>
-            <button type="submit" class="btn btn-dark btn-style btn-lg " id="btnRegister">
-                ย้อนกลับ                                    
-            </button>
-            
         </div>
        
         
+    </form>
+    <form action="HomeV2.php">
+        <button type="submit" id="clickme" class="btn btn-dark">ย้อนกลับ</button>
     </form>
 </div>
 </head>
