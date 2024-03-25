@@ -12,9 +12,9 @@
 
 
 
-    $sql = "update products set  ProductName = '{$prodname}',
-                                ProductPrice = '{$prodprice}'
-                                where ProductID = {$pid}";
+    $sql = "update products set  prodName = '{$prodname}',
+                                prodDPrice = '{$prodprice}'
+                                where prodid = {$pid}";
 
     if($con->query($sql)){
         echo "compleated";
